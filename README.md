@@ -32,7 +32,7 @@ sudo apt-get install libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf
 4. Install Cython
 
 ```
-sudo pip install -U Cython==0.28.2
+sudo pip install -U Cython
 ```
 
 5. Install Kivy using pip3
@@ -44,7 +44,7 @@ sudo pip3 install git+https://github.com/kivy/kivy.git@master
 6. Run an example for the config.ini file to be created
 
 ```
-cd /usr/local/shared/kivy-examples/demo/showcase
+cd /usr/local/share/kivy-examples/demo/showcase
 python main.py
 ```
 
@@ -55,12 +55,20 @@ cd /usr/local/lib/python2.7/dist-packages/kivy
 sudo nano ~/.kivy/config.ini
 ```
 
-Goto the [input] section and add the following
+Goto the *[input]* section and add the following
 
 ```
 mouse = mouse
 mtdev_%(name)s = probesysfs,provider=mtdev
 hid_%(name)s = probesysfs,provider-hidinput
 ```
+
+Goto the *[modules]* section and add the following to enable the mouse cursor as the Kivy window will work fullscreen on top of the mouse cursor by default
+
+```
+touchring = show_cursor=true
+```
+
+This will enable a ring to point out the cursor for you 
 
 8. Try the example again with touch
