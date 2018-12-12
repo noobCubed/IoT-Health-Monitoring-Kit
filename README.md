@@ -2,6 +2,10 @@
 
 A portable kit for easy measurement of certain health parameters like Blood Pressure, Temperature and ECG. Can be deployed in homes to avoid unnecessary trips to hospitals and costs involved. The kit is made using a Raspberry Pi 3B and a 7 inch Resistive Touch Screen, along with the sensor modules for each parameter involved. The Graphical User Interface for the kit was made using the Kivy Library.
 
+## Temperature
+
+Temperature is measured using a waterproof one-wire DS18B20 sensor. Temperature in Fahrenheit is displayed after a measurement delay of 10 seconds.
+
 ## Getting Started
 
 Instructions for setting up the Kivy library on the Raspberry Pi
