@@ -68,6 +68,7 @@ Root:
         Button:
             text: "Temperature"
             size_hint_x: 1
+            on_press: app.root.tempPage()
         Button:
             text: "Heart Rate"
             size_hint_x: 1
@@ -75,19 +76,6 @@ Root:
         size_hint_y: 1 
         padding: [30, 0, 0, 60]
         spacing: 70
-        Button:
-            text: "Instructions"
-            size_hint: (None, None)
-            size: ("200dp", "70dp")
-            on_press: app.root.bpInst() 
-        Button:
-            text: "Instructions"
-            size_hint: (None, None)
-            size: ("200dp", "70dp")
-        Button:
-            text: "Instructions"
-            size_hint: (None, None)
-            size: ("200dp", "70dp")
             
 <BpPage@BoxLayout>:
     orientation: "vertical"
@@ -128,6 +116,46 @@ Root:
                 text: "Instructions"
                 on_press: app.root.bpInst()
                         
+<TempPage@BoxLayout>:
+    orientation: "vertical"
+    BoxLayout:
+        size_hint_y: 1
+        Label:
+            text: "Temperature"
+            size_hint_x: 3
+        Button:
+            text: "Go Back"
+            size_hint_x: 1
+            on_press: app.root.mainPage()
+            
+    BoxLayout:
+        size_hint_y: 7 
+        padding: [30, 25, 30, 85]
+        spacing: 40
+        Image:
+            
+            source: 'tempImage.jpg'
+#            keep_ratio: False
+#            allow_stretch: True
+            size_hint_x: 3
+                            
+        BoxLayout:
+            orientation: "vertical"
+            size_hint_x: 1
+            padding: [0,0,0,25]
+            spacing: 30
+            Button:
+                size_hint_y: None
+                text: "Measure"
+                on_press: app.root.tempMeasure()
+            Button:
+                size_hint_y: None
+                text: "Records"
+            Button:
+                size_hint_y: None
+                text: "Instructions"
+                on_press: app.root.tempInst()
+                        
 <BpInst@BoxLayout>:
     orientation: "vertical"
     BoxLayout:
@@ -148,5 +176,52 @@ Root:
             text_size: self.size
             halign: 'left'
             valign: 'top'
-            text: "1. Wrap the cuff around the upper arm with the cuff's lower edge one inch above the antecubital fossa.\n2. Click the measure button to start the measurement\n3. The cuff will inflate by itself once the measurement has started.\n3. After the cuff inflates, the device will slowly let air out.\n4. Look at the display screen to get your blood pressure reading. It will show your systolic and diastolic pressures. For example, 120/80.\n5. If you need to repeat the measurement, wait 2 to 3 minutes before starting."
+            text: "1. Wrap the cuff around the upper arm with the cuff's lower edge one inch above the antecubital fossa.\n2. Click the measure button to start the measurement\n3. The cuff will inflate by itself once the measurement has started.\n4. After the cuff inflates, the device will slowly let air out.\n5. Look at the display screen to get your blood pressure reading. It will show your systolic and diastolic pressures. For example, 120/80.\n6. If you need to repeat the measurement, wait 2 to 3 minutes before starting."
             
+<TempInst@BoxLayout>:
+    orientation: "vertical"
+    BoxLayout:
+        size_hint_y: 1
+        Label:
+            text: "Instructions to measure BP"
+            size_hint_x: 3
+        Button:
+            text: "Go Back"
+            size_hint_x: 1
+            on_press: app.root.tempPage()
+            
+    BoxLayout:
+        size_hint_y: 7 
+        padding: [30, 30, 0, 0]
+#        spacing: 70
+        Label:
+            text_size: self.size
+            halign: 'left'
+            valign: 'top'
+            text: "1. Clean the temperature probe using the cloth provided.\n2. Place the probe under your tongue and hold it gently using the tongue.\n3. Press the measure button and wait till the value is displayed to remove the probe out of mouth.\n4. Clean the probe again and replace it in its position."
+
+<TempMeasure@BoxLayout>:
+    orientation: "vertical"
+    
+    orientation: "vertical"
+    BoxLayout:
+        size_hint_y: 1
+        Label:
+            text: "Measure Temperature"
+            size_hint_x: 3
+        Button:
+            text: "Go Back"
+            size_hint_x: 1
+            on_press: app.root.tempPage()
+    BoxLayout:
+        orientation: "vertical"
+        size_hint_y: 7 
+        padding: [30, 30, 0, 0]
+        Label:
+            text: "Celsius : " + str(app.root.sensor_value_c)
+        Label: 
+            text: "Farenheit : " + str(app.root.sensor_value_f)
+    
+         
+    
+    

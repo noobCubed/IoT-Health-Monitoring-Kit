@@ -38,7 +38,7 @@ sudo pip install -U Cython
 5. Install Kivy using pip3
 
 ```
-sudo pip3 install git+https://github.com/kivy/kivy.git@master
+sudo pip3 install git+https://github.com/kivy/kivy.git@stable-1.10
 ```
 
 6. Run an example for the config.ini file to be created
