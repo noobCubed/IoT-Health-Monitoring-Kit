@@ -9,6 +9,7 @@ Root:
     orientation: "vertical"
     Label:
         text: "Login"
+        font_size: 40
     BoxLayout:
         height: "40dp"
         size_hint_y: None 
@@ -17,6 +18,7 @@ Root:
         Label:
             text: "Username: "
             size_hint_x: 50
+            font_size: 30
         TextInput:
             size_hint_x: 50
     BoxLayout:
@@ -27,6 +29,7 @@ Root:
         Label:
             text: "Password: "
             size_hint_x: 50
+            font_size: 30
         TextInput:
             size_hint_x: 50
     BoxLayout:
@@ -39,14 +42,17 @@ Root:
             size: ("200dp", "70dp")
             size_hint: (None, None)
             on_press: app.root.mainPage()
+            font_size: 25
         Button:
             text: 'Forgot Password'
             size: ("200dp", "70dp")
             size_hint: (None, None)
+            font_size: 25
         Button:
             text: 'Sign Up'
             size: ("200dp", "70dp")
             size_hint: (None, None)
+            font_size: 25
 #        Slider:
 #            text: 'SLIDE'
 #            size_hint_x: 25
@@ -58,6 +64,7 @@ Root:
     Label:
         text: "Health Monitoring System"
         size_hint_y: 1
+        font_size: 40
     BoxLayout:
         size_hint_y: 1 
         spacing: 10
@@ -65,17 +72,25 @@ Root:
             text: "Blood Pressure"
             size_hint_x: 1
             on_press: app.root.bpPage()
+            font_size: 35
         Button:
             text: "Temperature"
             size_hint_x: 1
             on_press: app.root.tempPage()
+            font_size: 35
         Button:
             text: "Heart Rate"
             size_hint_x: 1
+            font_size: 35
     BoxLayout:
         size_hint_y: 1 
-        padding: [30, 0, 0, 60]
+        padding: [350, 0, 0, 60]
         spacing: 70
+        Button:
+            text: "Sign Out"
+            size_hint: (0,0)
+            font_size: 25
+            
             
 <BpPage@BoxLayout>:
     orientation: "vertical"
@@ -84,10 +99,12 @@ Root:
         Label:
             text: "Blood Pressure"
             size_hint_x: 3
+            font_size: 40
         Button:
             text: "Go Back"
             size_hint_x: 1
             on_press: app.root.mainPage()
+            font_size: 30
             
     BoxLayout:
         size_hint_y: 7 
@@ -108,13 +125,16 @@ Root:
             Button:
                 size_hint_y: None
                 text: "Measure"
+                font_size: 30
             Button:
                 size_hint_y: None
                 text: "Records"
+                font_size: 30
             Button:
                 size_hint_y: None
                 text: "Instructions"
                 on_press: app.root.bpInst()
+                font_size: 30
                         
 <TempPage@BoxLayout>:
     orientation: "vertical"
@@ -123,10 +143,12 @@ Root:
         Label:
             text: "Temperature"
             size_hint_x: 3
+            font_size: 40
         Button:
             text: "Go Back"
             size_hint_x: 1
             on_press: app.root.mainPage()
+            font_size: 30
             
     BoxLayout:
         size_hint_y: 7 
@@ -148,13 +170,17 @@ Root:
                 size_hint_y: None
                 text: "Measure"
                 on_press: app.root.tempMeasure()
+                font_size: 30
             Button:
                 size_hint_y: None
                 text: "Records"
+                on_press: app.root.tempRecords()
+                font_size: 30
             Button:
                 size_hint_y: None
                 text: "Instructions"
                 on_press: app.root.tempInst()
+                font_size: 30
                         
 <BpInst@BoxLayout>:
     orientation: "vertical"
@@ -163,10 +189,12 @@ Root:
         Label:
             text: "Instructions to measure BP"
             size_hint_x: 3
+            font_size: 40
         Button:
             text: "Go Back"
             size_hint_x: 1
             on_press: app.root.bpPage()
+            font_size: 30
             
     BoxLayout:
         size_hint_y: 7 
@@ -177,18 +205,21 @@ Root:
             halign: 'left'
             valign: 'top'
             text: "1. Wrap the cuff around the upper arm with the cuff's lower edge one inch above the antecubital fossa.\n2. Click the measure button to start the measurement\n3. The cuff will inflate by itself once the measurement has started.\n4. After the cuff inflates, the device will slowly let air out.\n5. Look at the display screen to get your blood pressure reading. It will show your systolic and diastolic pressures. For example, 120/80.\n6. If you need to repeat the measurement, wait 2 to 3 minutes before starting."
+            font_size: 30
             
 <TempInst@BoxLayout>:
     orientation: "vertical"
     BoxLayout:
         size_hint_y: 1
         Label:
-            text: "Instructions to measure BP"
+            text: "Instructions to measure Temp"
             size_hint_x: 3
+            font_size: 40
         Button:
             text: "Go Back"
             size_hint_x: 1
             on_press: app.root.tempPage()
+            font_size: 30
             
     BoxLayout:
         size_hint_y: 7 
@@ -199,28 +230,115 @@ Root:
             halign: 'left'
             valign: 'top'
             text: "1. Clean the temperature probe using the cloth provided.\n2. Place the probe under your tongue and hold it gently using the tongue.\n3. Press the measure button and wait till the value is displayed to remove the probe out of mouth.\n4. Clean the probe again and replace it in its position."
+            font_size: 30
 
-<TempMeasure@BoxLayout>:
-    orientation: "vertical"
-    
+<TempMeasure@BoxLayout>:    
     orientation: "vertical"
     BoxLayout:
         size_hint_y: 1
         Label:
             text: "Measure Temperature"
             size_hint_x: 3
+            font_size: 40
         Button:
             text: "Go Back"
             size_hint_x: 1
             on_press: app.root.tempPage()
+            font_size: 30
     BoxLayout:
         orientation: "vertical"
         size_hint_y: 7 
         padding: [30, 30, 0, 0]
         Label:
             text: "Celsius : " + str(app.root.sensor_value_c)
+            font_size: 30
         Label: 
             text: "Farenheit : " + str(app.root.sensor_value_f)
+            font_size: 30
+                    
+<TempRecords@BoxLayout>:    
+    orientation: "vertical"
+    BoxLayout:
+        size_hint_y: 1
+        Label:
+            text: "Temperature Records"
+            font_size: 40
+            size_hint_x: 3
+        Button:
+            text: "Go Back"
+            on_press: app.root.tempPage()
+            font_size: 30
+            size_hint_x: 1
+    GridLayout:
+        size_hint_y: 9
+        rows: 12
+        cols: 2
+        Button:
+            text: "Timestamp"
+            font_size: 20
+        Button:
+            text: "Fahrenheit"
+            font_size: 20
+        Button:
+            text: str(app.root.rec1time)
+            font_size: 20
+        Button:
+            text: str(app.root.rec1fahr)
+            font_size: 20
+        Button:
+            text: str(app.root.rec2time)
+            font_size: 20
+        Button:
+            text: str(app.root.rec2fahr)
+            font_size: 20
+        Button:
+            text: str(app.root.rec3time)
+            font_size: 20
+        Button:
+            text: str(app.root.rec3fahr)
+            font_size: 20
+        Button:
+            text: str(app.root.rec4time)
+            font_size: 20
+        Button:
+            text: str(app.root.rec4fahr)
+            font_size: 20
+        Button:
+            text: str(app.root.rec5time)
+            font_size: 20
+        Button:
+            text: str(app.root.rec5fahr)
+            font_size: 20
+        Button:
+            text: str(app.root.rec6time)
+            font_size: 20
+        Button:
+            text: str(app.root.rec6fahr)
+            font_size: 20
+        Button:
+            text: str(app.root.rec7time)
+            font_size: 20
+        Button:
+            text: str(app.root.rec7fahr)
+            font_size: 20
+        Button:
+            text: str(app.root.rec8time)
+            font_size: 20
+        Button:
+            text: str(app.root.rec8fahr)
+            font_size: 20
+        Button:
+            text: str(app.root.rec9time)
+            font_size: 20
+        Button:
+            text: str(app.root.rec9fahr)
+            font_size: 20
+        Button:
+            text: str(app.root.rec10time)
+            font_size: 20
+        Button:
+            text: str(app.root.rec10fahr)
+            font_size: 20
     
          
     
