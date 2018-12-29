@@ -28,8 +28,16 @@ device_folder = glob.glob(base_dir + '28*')[0]
 device_file = device_folder + '/w1_slave'
 
 csvData = [['Timestamp', 'Farenheit']]
+userData = [['Username', 'Password']]
 
 class Root(BoxLayout):
+    
+    try:
+        open('users.csv')
+    except:    
+        with open('users.csv', 'w', newline='') as csvFile:
+            writer = csv.writer(csvFile)
+            writer.writerows(userData)
     
     sensor_value_f = NumericProperty(0)
     
@@ -53,6 +61,51 @@ class Root(BoxLayout):
     rec8fahr = NumericProperty(0)
     rec9fahr = NumericProperty(0)
     rec10fahr = NumericProperty(0)
+    
+    def loginPage(self):
+        self.clear_widgets()
+        lPage = Factory.Login()
+        self.add_widget(lPage)
+    
+    def signUpPage(self):
+        self.clear_widgets()
+        sPage = Factory.SignUp()
+        self.add_widget(sPage)
+        
+    def validate(self, username, password, status):       
+        reader = csv.reader(open("users.csv"))
+        
+        d={}
+
+        for row in reader:
+            d[row[0]]=row[1:]
+        
+        try:
+            if((d[username])[0] == password):
+                self.mainPage()
+            else:
+                status.text = "Wrong Password"
+        except:
+            status.text = "User not found"
+            
+    
+    def signUp(self, name, passw, result):
+        reader = csv.reader(open("users.csv"))
+        
+        d={}
+
+        for row in reader:
+            d[row[0]]=row[1:]
+            
+        try:
+            d[name]
+            result.text = "Username taken"
+        except:    
+            with open('users.csv', 'a', newline='') as csvFile:
+                writer = csv.writer(csvFile)
+                writer.writerow([name, passw])
+        
+            result.text = "Signed Up!"
     
     def mainPage(self):
         self.clear_widgets()

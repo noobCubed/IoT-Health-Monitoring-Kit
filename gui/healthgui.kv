@@ -13,7 +13,6 @@ Root:
     BoxLayout:
         height: "40dp"
         size_hint_y: None 
-#        spacing: 10
         padding: [10, 0, 80, 0]
         Label:
             text: "Username: "
@@ -21,10 +20,10 @@ Root:
             font_size: 30
         TextInput:
             size_hint_x: 50
+            id: username
     BoxLayout:
         height: "40dp"
         size_hint_y: None 
-#        spacing: 10
         padding: [10, 0, 80, 0]
         Label:
             text: "Password: "
@@ -32,6 +31,7 @@ Root:
             font_size: 30
         TextInput:
             size_hint_x: 50
+            id: password
     BoxLayout:
         orientation: "vertical"
         height: "400dp"
@@ -41,24 +41,72 @@ Root:
             text: 'Login'
             size: ("200dp", "70dp")
             size_hint: (None, None)
-            on_press: app.root.mainPage()
-            font_size: 25
-        Button:
-            text: 'Forgot Password'
-            size: ("200dp", "70dp")
-            size_hint: (None, None)
+            on_press: app.root.validate(username.text, password.text, result)
             font_size: 25
         Button:
             text: 'Sign Up'
             size: ("200dp", "70dp")
             size_hint: (None, None)
             font_size: 25
-#        Slider:
-#            text: 'SLIDE'
-#            size_hint_x: 25
-#    ListView:
-#        item_strings: ["Palo Allooo", "Valar Morgulis"]
-
+            on_press: app.root.signUpPage()
+        Label:
+            text: ''
+            size: ("200dp", "70dp")
+            size_hint: (None, None)
+            font_size: 25
+            id: result
+            
+<SignUp@BoxLayout>:
+    orientation: "vertical"
+    Label:
+        text: "Sign Up"
+        font_size: 40
+    BoxLayout:
+        height: "40dp"
+        size_hint_y: None 
+        padding: [10, 0, 80, 0]
+        Label:
+            text: "Username: "
+            size_hint_x: 50
+            font_size: 30
+        TextInput:
+            size_hint_x: 50
+            id: name
+    BoxLayout:
+        height: "40dp"
+        size_hint_y: None 
+        padding: [10, 0, 80, 0]
+        Label:
+            text: "Password: "
+            size_hint_x: 50
+            font_size: 30
+        TextInput:
+            size_hint_x: 50
+            id: passw
+    BoxLayout:
+        orientation: "vertical"
+        height: "400dp"
+        size_hint_y: None 
+        padding: [300, 0, 0, 100]
+        Button:
+            text: 'Sign Up'
+            size: ("200dp", "70dp")
+            size_hint: (None, None)
+            on_press: app.root.signUp(name.text, passw.text, signUpText)
+            font_size: 25
+        Button:
+            text: 'Go Back'
+            size: ("200dp", "70dp")
+            size_hint: (None, None)
+            on_press: app.root.loginPage()
+            font_size: 25
+        Label:
+            text: ''
+            size: ("200dp", "70dp")
+            size_hint: (None, None)
+            font_size: 25
+            id: signUpText
+            
 <MainPage@BoxLayout>:
     orientation: "vertical"
     Label:
@@ -113,8 +161,6 @@ Root:
         Image:
             
             source: 'image.png'
-#            keep_ratio: False
-#            allow_stretch: True
             size_hint_x: 3
                             
         BoxLayout:
@@ -157,8 +203,6 @@ Root:
         Image:
             
             source: 'tempImage.jpg'
-#            keep_ratio: False
-#            allow_stretch: True
             size_hint_x: 3
                             
         BoxLayout:
@@ -199,7 +243,6 @@ Root:
     BoxLayout:
         size_hint_y: 7 
         padding: [30, 30, 0, 0]
-#        spacing: 70
         Label:
             text_size: self.size
             halign: 'left'
@@ -224,7 +267,6 @@ Root:
     BoxLayout:
         size_hint_y: 7 
         padding: [30, 30, 0, 0]
-#        spacing: 70
         Label:
             text_size: self.size
             halign: 'left'
